@@ -158,6 +158,9 @@ el html es el siguiente
           <div class="carousel-item">
             <img class="d-block w-100" src="img/wp8.jpg" alt="Third slide">
           </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/wp9.jpg" alt="Fourth slide">
+          </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
