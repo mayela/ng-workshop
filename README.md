@@ -122,6 +122,169 @@ export class AppComponent {
   title = 'Angular project';
 }
 ```
+## Creación de un carrousel de imagenes
+
+Antes que nada vamos a crear un carrousel con html y bootstrap
+
+el html es el siguiente
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Carousel</title>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+      
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="img/wp1.jpg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/wp7.png" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/wp8.jpg" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+</body>
+</html>
+
+```
+
+Crearemos un carrousel de imagenes haciendo uso de Angular, Bootstrap y un paquete extra llamado ng-bootstrap.
+
+Primero crearemos un nuevo proyeto de Angular con el comando:
+
+```bash
+$ ng new ngb-carousel
+```
+
+A continuación crearemos el componente _ngb-carousel_:
+```bash
+$ ng generate component ngb-carousel
+```
+
+Luego instalamos las dependencias necesarias para el carousel:
+
+```bash
+$ npm install bootstrap
+$ npm install @ng-bootstrap/ng-bootstrap
+```
+
+Ahora a trabajar en el template del componente carousel:
+
+```html
+<div id="wrapper">
+<ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <img [src]="images[0]" alt="Random first slide">
+  </ng-template>
+  <ng-template ngbSlide>
+    <img [src]="images[1]" alt="Random second slide">
+  </ng-template>
+  <ng-template ngbSlide>
+    <img [src]="images[2]" alt="Random third slide">
+  </ng-template>
+  <ng-template ngbSlide>
+    <img [src]="images[3]" alt="Random fourth slide">
+  </ng-template>
+</ngb-carousel>
+</div>
+```
+
+En los estilos del componente carousel colocaremos lo que sigue:
+
+```
+#wrapper {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+
+img {
+    max-width: 100%
+}
+```
+
+En el módulo raíz de la aplicación lo siguiente:
+
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AppComponent } from './app.component';
+import { NgbCarouselComponent } from './ngb-carousel/ngb-carousel.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NgbCarouselComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgbModule.forRoot()
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Y finalmente el componente:
+
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AppComponent } from './app.component';
+import { NgbCarouselComponent } from './ngb-carousel/ngb-carousel.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NgbCarouselComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgbModule.forRoot()
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
 
 ## Referencias
 
@@ -134,3 +297,8 @@ export class AppComponent {
 * https://malcoded.com/posts/angular-beginners-guide
 * https://docs.npmjs.com/getting-started/using-a-package.json
 * https://code.visualstudio.com/docs/nodejs/angular-tutorial
+* https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a
+* https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/
+* https://medium.com/codingthesmartway-com-blog/building-an-angular-5-project-with-bootstrap-4-and-firebase-4504ff7717c1
+* https://netbasal.com/building-a-simple-carousel-component-with-angular-3a94092b7080
+* https://medium.com/@balramchavan/integrating-google-maps-in-angular-5-ca5f68009f29
