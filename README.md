@@ -289,6 +289,7 @@ export class NgbCarouselComponent implements OnInit {
 }
 ```
 
+## Como agregar Google Maps a mi proyecto de Angular
 
 ## Referencias
 
