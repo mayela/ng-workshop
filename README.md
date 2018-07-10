@@ -307,3 +307,4 @@ export class NgbCarouselComponent implements OnInit {
 * https://medium.com/codingthesmartway-com-blog/building-an-angular-5-project-with-bootstrap-4-and-firebase-4504ff7717c1
 * https://netbasal.com/building-a-simple-carousel-component-with-angular-3a94092b7080
 * https://medium.com/@balramchavan/integrating-google-maps-in-angular-5-ca5f68009f29
+* https://github.com/orizens/ngx-infinite-scroll
