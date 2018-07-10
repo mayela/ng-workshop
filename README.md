@@ -266,30 +266,27 @@ export class AppModule { }
 Y finalmente el componente:
 
 ```
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
-
-import { AppComponent } from './app.component';
-import { NgbCarouselComponent } from './ngb-carousel/ngb-carousel.component';
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    NgbCarouselComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgbModule.forRoot()
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+@Component({
+  selector: 'app-ngb-carousel',
+  templateUrl: './ngb-carousel.component.html',
+  styleUrls: ['./ngb-carousel.component.css']
 })
-export class AppModule { }
+export class NgbCarouselComponent implements OnInit {
+  images: Array<string> = [
+  "assets/img/wp1.jpg",
+  "assets/img/wp7.png",
+  "assets/img/wp8.jpg",
+  "assets/img/wp9.jpg"
+  ];
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
 ```
 
 
