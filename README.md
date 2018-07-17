@@ -288,6 +288,76 @@ export class NgbCarouselComponent implements OnInit {
 
 }
 ```
+## Routing en Angular
+
+El _Router_ de Angular te permite navegar entre vistas a petición del usuario. Puede interpretar una _URL_ ingresada en el navegador como una llamada a una vista en específico. Puedes ligar el _router_ a enlaces dentro de la página que navegarán a la vista.
+
+El _Router_ en Angular en un servicio opcional que presenta una vista de un componente en particular dada una _URL_
+
+Se encuentra dentro de su propio paquete y se importa de la siguiente manera:
+
+```javascript
+import { RouterModule, Routes } from '@angular/router';
+```
+
+Una aplicación en Angular tiene solo una instancia del servicio _Router_. Un _router_ no tiene rutas hasta que estas son configuradas vía el método _forRoot_ dentro de _RouterModule_:
+
+```javascript
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+  
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+  
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'heroes', component: HeroesComponent }
+];
+  
+@NgModule({
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}
+```
+
+> app-routing.module.ts
+
+```javascript
+import { NgModule }       from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
+import { FormsModule }    from '@angular/forms';
+  
+import { AppComponent }         from './app.component';
+import { DashboardComponent }   from './dashboard/dashboard.component';
+import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
+import { HeroesComponent }      from './heroes/heroes.component';
+import { MessagesComponent }    from './messages/messages.component';
+  
+import { AppRoutingModule }     from './app-routing.module';
+  
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
+
+> app.module.ts
 
 ## Como agregar Google Maps a mi proyecto de Angular
 
